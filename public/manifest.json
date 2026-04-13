@@ -1,0 +1,21 @@
+{
+  "short_name": "CareerAI",
+  "name": "AI Career Copilot Strategist",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/vite.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "description": "Elite AI Career Strategist using deterministic analysis and Google Gemini."
+}
