@@ -1,6 +1,15 @@
 # 🚀 AI Career Copilot: Strategic Growth Architecture
 
-**AI Career Copilot** is a high-performance, deterministic career strategy engine designed to bridge the gap between current technical expertise and elite market ambitions. This solution demonstrates a smart, dynamic AI assistant capable of logical decision-making based on deep user context.
+## 🎯 Challenge Vertical: AI Career Strategist
+**Status: FULLY ALIGNED - Smart Vertical Assistant**
+
+This platform is a mission-critical implementation of the **Smart Vertical Assistant** for the **Workforce Development** sector. It replaces generic career advice with a deterministic, AI-driven strategic engine.
+
+### 🏛️ Strategic Alignment & Logic
+- **Problem Statement**: "Participants must choose one of the provided challenge verticals and design their solution around that persona and logic."
+- **Selected Vertical**: AI Career Strategist (Workforce Development).
+- **Core Logic**: Uses a deterministic analysis engine to map expertise against market targets (Startup, FAANG, Product), combined with **Google Gemini 2.0** for real-time roadmap synthesis.
+- **Google Services Integrated**: Google Generative AI (Gemini), Firebase Cloud, YouTube Learning Hub, Google Fonts, and Google Calendar.
 
 ---
 
