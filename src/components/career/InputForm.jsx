@@ -97,23 +97,27 @@ const InputForm = ({ onSubmit, isLoading }) => {
               <label className="text-xs font-bold uppercase tracking-widest text-text-muted">Current Expertise</label>
               <span className="text-[10px] font-semibold text-text-muted/40 uppercase italic tracking-wider">Comma separated</span>
             </div>
-            <div className={`
-              aesthetic-input min-h-[120px] p-3 flex flex-wrap gap-2 items-start transition-all cursor-text
-              ${suggestionState.type === 'skills' ? 'ring-4 ring-indigo-500/10' : 'focus-within:ring-2 focus-within:ring-primary focus-within:border-primary/20'}
-            `} onClick={() => skillRef.current.querySelector('input').focus()}>
+            <div 
+              className={`aesthetic-input min-h-[120px] p-3 flex flex-wrap gap-2 items-start transition-all cursor-text ${suggestionState.type === 'skills' ? 'ring-4 ring-indigo-500/10' : 'focus-within:ring-2 focus-within:ring-primary focus-within:border-primary/20'}`} 
+              onClick={() => skillRef.current.querySelector('input').focus()}
+              role="textbox"
+              aria-label="Current Skills container"
+            >
               {formData.skills.map((skill, i) => (
                 <div key={i} className="bg-primary text-white text-[10px] font-black px-3 py-1.5 rounded-lg flex items-center gap-2 shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95">
                   {skill}
-                  <button type="button" onClick={() => removeSkill(skill)} className="hover:text-white/70">×</button>
+                  <button type="button" onClick={() => removeSkill(skill)} className="hover:text-white/70" aria-label={`Remove ${skill}`}>×</button>
                 </div>
               ))}
               <input
+                id="skill-input"
                 type="text"
                 className="bg-transparent border-none outline-none flex-grow min-w-[100px] text-sm text-text-main font-bold p-1 placeholder:text-text-muted/40"
                 placeholder={formData.skills.length === 0 ? "e.g. React" : ""}
                 value={skillInput}
                 onChange={(e) => { setSkillInput(e.target.value); setSuggestionState({ type: 'skills', value: e.target.value }); }}
                 onFocus={() => setSuggestionState({ type: 'skills', value: skillInput })}
+                aria-autocomplete="list"
               />
             </div>
 
@@ -136,14 +140,16 @@ const InputForm = ({ onSubmit, isLoading }) => {
 
           {/* Goal Input */}
           <div className="space-y-3 relative" ref={goalRef}>
-            <label className="text-xs font-bold uppercase tracking-widest text-text-muted ml-1">Target Ambition</label>
+            <label htmlFor="goal-input" className="text-xs font-bold uppercase tracking-widest text-text-muted ml-1">Target Ambition</label>
             <input
+              id="goal-input"
               type="text"
               placeholder="e.g. Senior Frontend Architect"
               className="aesthetic-input px-6 py-4"
               value={formData.goal}
               onChange={(e) => { setFormData({ ...formData, goal: e.target.value }); setSuggestionState({ type: 'goal', value: e.target.value }); }}
               onFocus={() => setSuggestionState({ type: 'goal', value: formData.goal })}
+              aria-required="true"
             />
             {/* Compact Suggestions: Goals */}
             {suggestionState.type === 'goal' && filteredRoles.length > 0 && (
@@ -164,16 +170,16 @@ const InputForm = ({ onSubmit, isLoading }) => {
 
           <div className="grid grid-cols-1 gap-6 pt-2">
             <div className="space-y-3">
-              <label className="text-xs font-bold uppercase tracking-widest text-text-muted ml-1">Seniority Level</label>
-              <select className="aesthetic-input appearance-none bg-[var(--card-bg)] font-bold text-sm cursor-pointer border border-[var(--border-color)]" value={formData.experience} onChange={(e) => setFormData({ ...formData, experience: e.target.value })}>
+              <label htmlFor="experience-select" className="text-xs font-bold uppercase tracking-widest text-text-muted ml-1">Seniority Level</label>
+              <select id="experience-select" className="aesthetic-input appearance-none bg-[var(--card-bg)] font-bold text-sm cursor-pointer border border-[var(--border-color)]" value={formData.experience} onChange={(e) => setFormData({ ...formData, experience: e.target.value })}>
                 <option value="beginner">Beginner</option>
                 <option value="intermediate">Intermediate</option>
                 <option value="experienced">Experienced</option>
               </select>
             </div>
             <div className="space-y-3">
-              <label className="text-xs font-bold uppercase tracking-widest text-text-muted ml-1">Target Market segment</label>
-              <select className="aesthetic-input appearance-none bg-[var(--card-bg)] font-bold text-sm cursor-pointer border border-[var(--border-color)]" value={formData.targetType} onChange={(e) => setFormData({ ...formData, targetType: e.target.value })}>
+              <label htmlFor="market-select" className="text-xs font-bold uppercase tracking-widest text-text-muted ml-1">Target Market segment</label>
+              <select id="market-select" className="aesthetic-input appearance-none bg-[var(--card-bg)] font-bold text-sm cursor-pointer border border-[var(--border-color)]" value={formData.targetType} onChange={(e) => setFormData({ ...formData, targetType: e.target.value })}>
                 <option value="startup">Startup Growth</option>
                 <option value="product">Product-Based Corp</option>
                 <option value="faang">FAANG / Big Tech</option>
