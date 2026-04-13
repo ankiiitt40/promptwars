@@ -1,14 +1,14 @@
-import { GoogleGenerativeAI } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 
 /**
  * GOOGLE GENERATIVE AI (GEMINI) INTEGRATION
  * This service powers the 'Smart Assistant' capabilities of the Career Copilot.
- * It uses the elite Gemini 2.0 Flash model for high-velocity strategic auditing.
+ * It uses the unified GoogleGenAI SDK for elite strategic auditing.
  */
 
 // Using Vite Environment Variable for security (VITE_ prefix is required)
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "YOUR_GEMINI_API_KEY_HERE";
-const genAI = new GoogleGenerativeAI(API_KEY);
+const client = new GoogleGenAI({ apiKey: API_KEY });
 
 export const generateCareerStrategy = async (prompt) => {
   try {
@@ -18,10 +18,12 @@ export const generateCareerStrategy = async (prompt) => {
       return null;
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    return response.text();
+    const response = await client.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: [{ role: "user", parts: [{ text: prompt }] }]
+    });
+
+    return response.text;
   } catch (error) {
     console.error("Google AI Strategy Error:", error);
     return null;
