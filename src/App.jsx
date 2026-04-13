@@ -7,6 +7,7 @@ import AtmosphericBackground from './components/layout/AtmosphericBackground';
 import MarketTicker from './components/layout/MarketTicker';
 import { useCareerCopilot } from './hooks/useCareerCopilot';
 import { runStrategicTests } from './utils/testCases';
+import ErrorBoundary from './components/common/ErrorBoundary';
 
 /**
  * Main Application Component
