@@ -5,14 +5,27 @@ import { useGoogleIntegration } from '../../hooks/useGoogleIntegration';
 import { useSoundEffects } from '../../hooks/useSoundEffects';
 import { formatPlanAsText, downloadTextFile } from '../../utils/exporter';
 
+import { logEvent } from "firebase/analytics";
+import { analytics } from "../../services/firebase";
+
 /**
  * CareerStrategizer Component - Staggered Reveal Edition
- * Implements a sequential 'AI Thinking' reveal to guide user focus.
  */
 const CareerStrategizer = ({ plan }) => {
   const [isCalendarModalOpen, setCalendarModalOpen] = useState(false);
   const [completedTasks, setCompletedTasks] = useState([]);
   const [showConfetti, setShowConfetti] = useState(false);
+
+  // 🔔 GOOGLE SERVICE ADOPTION: Log generation event to Firebase
+  useEffect(() => {
+    if (plan && analytics) {
+      logEvent(analytics, 'career_plan_generated', {
+        level: plan.level,
+        score: plan.score,
+        vertical: "AI Career Strategist"
+      });
+    }
+  }, [plan]);
   
   // Typewriter Hook: Simulates AI generation for long-form insights
   const useTypewriter = (text, speed = 5, startAfter = 0) => {

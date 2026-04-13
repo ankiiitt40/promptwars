@@ -79,10 +79,10 @@ const App = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
           
           {/* Global Notifications Feedback */}
-          <div className="fixed top-24 right-8 z-[200] space-y-4">
+          <div className="fixed top-24 right-8 z-[200] space-y-4" aria-live="polite">
             {showSuccess && (
-              <div className="bg-[#0f172a] shadow-2xl shadow-indigo-500/20 px-6 py-4 rounded-2xl flex items-center gap-4 animate-fade-in-right border border-white/10 text-white font-sans">
-                 <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-xl">✨</div>
+              <div role="status" className="bg-[#0f172a] shadow-2xl shadow-indigo-500/20 px-6 py-4 rounded-2xl flex items-center gap-4 animate-fade-in-right border border-white/10 text-white font-sans">
+                 <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-xl" aria-hidden="true">✨</div>
                  <div>
                    <p className="text-sm font-black italic text-white uppercase tracking-widest">Plan Generated!</p>
                    <p className="text-[10px] text-white/50 font-bold uppercase tracking-widest leading-none mt-1">Audit complete</p>
