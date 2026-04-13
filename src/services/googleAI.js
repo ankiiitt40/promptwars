@@ -6,8 +6,8 @@ import { GoogleGenerativeAI } from "@google/genai";
  * It uses the elite Gemini 2.0 Flash model for high-velocity strategic auditing.
  */
 
-// NOTE: Replace with your actual Gemini API Key from Google AI Studio
-const API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+// Using Vite Environment Variable for security (VITE_ prefix is required)
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "YOUR_GEMINI_API_KEY_HERE";
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 export const generateCareerStrategy = async (prompt) => {
