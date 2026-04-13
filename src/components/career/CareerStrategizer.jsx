@@ -255,13 +255,43 @@ const CareerStrategizer = ({ plan }) => {
           <AdvancedCard title="Strategic Guidance">
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {plan.resumeTips.map((tip, i) => (
-                  <div key={i} className="p-4 bg-slate-50/50 rounded-2xl border border-slate-100 flex gap-4 items-start">
+                  <div key={i} className="p-4 bg-slate-50/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 flex gap-4 items-start">
                     <span className="text-lg">💡</span>
                     <p className="text-xs font-bold text-text-muted leading-relaxed pt-1">{tip.text}</p>
                   </div>
                 ))}
              </div>
           </AdvancedCard>
+        </div>
+
+        {/* 🟢 STEP 8: YouTube Masterclass Integration (Elite Google Service) */}
+        <div className={`md:col-span-2 ${STAGGER_STYLE} ${visibleLevel >= 6 ? VISIBLE_STATE : HIDDEN_STATE}`}>
+           <h3 className="text-xs font-bold uppercase tracking-widest text-[#ff0000] mb-4 ml-1 flex items-center gap-2">
+             <span className="w-2 h-2 rounded-full bg-[#ff0000] animate-pulse"></span>
+             Direct Learning Ecosystem
+           </h3>
+           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+             {plan.skillGap.slice(0, 3).map((skill, i) => (
+               <a 
+                key={i} 
+                href={`https://www.youtube.com/results?search_query=learn+${encodeURIComponent(skill)}+masterclass`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => playClick()}
+                className="minimal-card p-6 group hover:border-[#ff0000]/30 transition-all flex flex-col justify-between"
+               >
+                 <div>
+                   <span className="text-2xl mb-4 block">🎥</span>
+                   <h4 className="text-[10px] font-black uppercase tracking-widest text-text-muted mb-2 opacity-60">Masterclass</h4>
+                   <p className="text-sm font-bold text-text-main group-hover:text-[#ff0000] transition-colors">{skill}</p>
+                 </div>
+                 <div className="mt-4 pt-4 border-t border-[var(--border-color)] flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-text-muted">
+                    Open YouTube
+                    <span className="opacity-0 group-hover:opacity-100 transition-all">→</span>
+                 </div>
+               </a>
+             ))}
+           </div>
         </div>
 
       </div>
